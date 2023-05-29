@@ -18,6 +18,7 @@ module.exports = {
         alias: {
             '~src': path.resolve(__dirname, '../src/'),
             '~ui': path.resolve(__dirname, '../src/ui/'),
+            '~app-state': path.resolve(__dirname, '../src/app-state/'),
             '~components': path.resolve(__dirname, '../src/components/'),
             '~todo-context': path.resolve(__dirname, '../src/todo-context/'),
             '~img': path.resolve(__dirname, '../src/img/'),

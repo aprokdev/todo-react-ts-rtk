@@ -1,15 +1,21 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setHideCompleted } from '~app-state/hideCompleted/hideCompletedSlice';
+import { RootState } from '~app-state/store';
 import Checkbox from '~ui/checkbox';
 import Label from '~ui/label';
 import './style.scss';
-import { IHideCheckedProps } from './types';
 
-function HideChecked({ isCompletedHidden, setHideCompleted }: IHideCheckedProps) {
+// import { IHideCheckedProps } from './types';
+
+function HideChecked() {
+    const isCompletedHidden = useSelector((state: RootState) => state.hideCompleted);
+    const dispatch = useDispatch();
     return (
         <div className="hide-checked">
             <Checkbox
                 checked={isCompletedHidden}
-                onChange={(e) => setHideCompleted(e.target.checked)}
+                onChange={(e) => dispatch(setHideCompleted({ checked: e.target.checked }))}
                 id="#sort-checked"
                 testId="sort-checked"
             />
@@ -18,5 +24,5 @@ function HideChecked({ isCompletedHidden, setHideCompleted }: IHideCheckedProps)
     );
 }
 
-export default HideChecked;
-// export default React.memo(HideChecked);
+// export default HideChecked;
+export default React.memo(HideChecked);

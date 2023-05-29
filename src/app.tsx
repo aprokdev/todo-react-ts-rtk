@@ -1,16 +1,23 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import CreateTodo from '~components/create-todo';
 import HideChecked from '~components/hide-checked';
 import Sorting from '~components/sorting';
 import TodosList from '~components/todos-list';
-import { useTodos } from '~todo-context/index';
 import icon from '~img/icon.svg';
 import reduxLogo from '~img/redux-logo.png';
+import { RootState } from './app-state/store';
 import './app.scss';
 
 function App() {
-    const { state, dispatch, isCompletedHidden, setHideCompleted } = useTodos();
-    const { listTodos, sortingTitle } = state;
+    const listTodos = useSelector((state: RootState) => state.todos);
+    const app = useSelector((state: RootState) => state);
+
+    React.useEffect(() => {
+        localStorage.setItem('listTodos', JSON.stringify(app.todos));
+        localStorage.setItem('sortingTitle', JSON.stringify(app.sortingTitle));
+    }, [app]);
+
     return (
         <div className="app">
             <div className="app__head">
@@ -23,22 +30,12 @@ function App() {
                     className="app__head-img app__head-img--redux"
                 />
             </div>
-            <CreateTodo dispatch={dispatch} />
-            {listTodos.length > 0 && <Sorting sortingTitle={sortingTitle} dispatch={dispatch} />}
-            <TodosList
-                listTodos={listTodos}
-                dispatch={dispatch}
-                isCompletedHidden={isCompletedHidden}
-                setHideCompleted={setHideCompleted}
-            />
+            <CreateTodo />
+            {listTodos.length > 0 && <Sorting />}
+            <TodosList />
             {Array.isArray(listTodos) &&
                 listTodos.length > 0 &&
-                listTodos.find(({ isCompleted }) => isCompleted) && (
-                    <HideChecked
-                        isCompletedHidden={isCompletedHidden}
-                        setHideCompleted={setHideCompleted}
-                    />
-                )}
+                listTodos.find(({ isCompleted }) => isCompleted) && <HideChecked />}
         </div>
     );
 }

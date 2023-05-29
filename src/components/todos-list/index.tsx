@@ -2,17 +2,19 @@
 
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '~app-state/store';
 import { ITodo } from '~src/todo-context/types';
 import TodoItem from '~components/todo-item/index';
 import './style.scss';
-import { ITodosListProps } from './types';
 
-function TodosList({
-    listTodos,
-    dispatch,
-    isCompletedHidden,
-    setHideCompleted,
-}: ITodosListProps): JSX.Element {
+// import { ITodosListProps } from './types';
+
+// function TodosList({ listTodos, dispatch, isCompletedHidden }: ITodosListProps): JSX.Element {
+function TodosList(): JSX.Element {
+    const listTodos = useSelector((state: RootState) => state.todos);
+    const isCompletedHidden = useSelector((state: RootState) => state.hideCompleted);
+    const dispatch = useDispatch();
     return (
         <React.Fragment>
             {!isCompletedHidden &&
@@ -45,5 +47,5 @@ function TodosList({
     );
 }
 
-export default TodosList;
-// export default React.memo(TodosList);
+// export default TodosList;
+export default React.memo(TodosList);

@@ -1,18 +1,23 @@
 /* eslint-disable no-extra-boolean-cast */
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '~app-state/todos/todosSlice';
 import Button from '~ui/button';
 import Input from '~ui/input';
-import { actionTypes } from '~todo-context/actionTypes';
+// import { actionTypes } from '~todo-context/actionTypes';
 import './style.scss';
-import { ICreateTodoProps } from './types';
 
-function CreateTodo({ dispatch }: ICreateTodoProps) {
+// import { ICreateTodoProps } from './types';
+
+// function CreateTodo({ dispatch }: ICreateTodoProps) {
+function CreateTodo() {
+    const dispatch = useDispatch();
     const [text, updateText] = React.useState<string>('');
 
     const createTodo = React.useCallback(
         (event: React.MouseEvent<HTMLInputElement>) => {
             event.preventDefault();
-            if (text) dispatch({ type: actionTypes.ADD_TODO, text });
+            if (text) dispatch(addTodo({ text }));
             updateText('');
         },
         [text, dispatch]
@@ -41,5 +46,5 @@ function CreateTodo({ dispatch }: ICreateTodoProps) {
     );
 }
 
-export default CreateTodo;
-// export default React.memo(CreateTodo);
+// export default CreateTodo;
+export default React.memo(CreateTodo);

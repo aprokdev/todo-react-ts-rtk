@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { TodoProvider } from '~todo-context/index';
+import { Provider } from 'react-redux';
+import { store } from '~app-state/store';
 import App from './app';
 import './index.scss';
 
 const root = (
     <React.StrictMode>
-        <TodoProvider>
+        <Provider store={store}>
             <App />
-        </TodoProvider>
+        </Provider>
     </React.StrictMode>
 );
 

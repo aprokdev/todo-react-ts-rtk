@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import React, { MouseEvent } from 'react';
 import { useInView } from 'react-intersection-observer';
 import 'react-intersection-observer/test-utils';
+import { checkTodo, deleteTodo, editTodo } from '~app-state/todos/todosSlice';
 import { ITodo } from '~src/todo-context/types';
 import Checkbox from '~ui/checkbox';
 import Label from '~ui/label';
 import TextareaAutosize from '~ui/textarea-autosize';
-import { actionTypes } from '~todo-context/actionTypes';
+// import { actionTypes } from '~todo-context/actionTypes';
 import './style.scss';
 import { ITodoProps } from './type';
 
@@ -27,7 +28,8 @@ function TodoItem({ todo, dispatch, testId }: ITodoProps): JSX.Element {
     }
 
     const onBlurInput = React.useCallback(() => {
-        dispatch({ type: actionTypes.EDIT_TODO, text: value, id });
+        // dispatch({ type: actionTypes.EDIT_TODO, text: value, id });
+        dispatch(editTodo({ id, text: value }));
         setEditing(false);
     }, [id, value, setEditing, dispatch]);
 
@@ -57,7 +59,8 @@ function TodoItem({ todo, dispatch, testId }: ITodoProps): JSX.Element {
                 <Checkbox
                     checked={isCompleted}
                     onChange={({ target }) =>
-                        dispatch({ type: actionTypes.CHECK_TODO, id, checked: target.checked })
+                        // dispatch({ type: actionTypes.CHECK_TODO, id, checked: target.checked })
+                        dispatch(checkTodo({ id, checked: target.checked }))
                     }
                     id={String(id)}
                     testId={`${label}-cb`}
@@ -91,7 +94,7 @@ function TodoItem({ todo, dispatch, testId }: ITodoProps): JSX.Element {
             <span className="todo-item__separator">/</span>
             <button
                 type="button"
-                onClick={() => dispatch({ type: actionTypes.DELETE_TODO, id })}
+                onClick={() => dispatch(deleteTodo({ id }))}
                 disabled={false}
                 className="todo-item__action-btn"
                 data-testid={`${label}-delete`}
@@ -113,5 +116,5 @@ TodoItem.propTypes = {
     testId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-export default TodoItem;
-// export default React.memo(TodoItem);
+// export default TodoItem;
+export default React.memo(TodoItem);

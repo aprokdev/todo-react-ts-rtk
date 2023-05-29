@@ -8,7 +8,7 @@
     "build": "npx webpack build --config ./config/webpack.prod.js",
     "dev": "npx webpack serve --config ./config/webpack.dev.js",
     "start": "npx webpack serve --config ./config/webpack.dev.js",
-    "tests": "jest --verbose NODE_ENV=test",
+    "tests": "jest --verbose",
     "tests:dev": "jest --watchAll",
     "tests:e2e": "npx cypress open",
     "lint": "npx eslint ./src --ext .ts,.tsx",

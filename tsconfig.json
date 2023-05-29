@@ -6,6 +6,7 @@
       // "~api/*": ["src/api/*"],
       "~src/*": ["src/*"],
       "~ui/*": ["src/ui/*"],
+      "~app-state/*": ["src/app-state/*"],
       "~components/*": ["src/components/*"],
       "~todo-context/*": ["src/todo-context/*"],
       "~custom-types/*": ["src/custom-types/*"],

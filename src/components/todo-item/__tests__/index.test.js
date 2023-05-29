@@ -59,7 +59,6 @@ describe('TodoItem', () => {
         expect(screen.queryByTestId(`${label}-edit-field`)).toBeNull();
         const editBtn = screen.getByTestId(`${label}-edit`);
         await user.click(editBtn);
-        screen.debug();
         expect(screen.queryByTestId(`${label}-edit-field`)).toBeInTheDocument();
         await user.type(screen.queryByTestId(`${label}-edit-field`), ' text');
         expect(screen.queryByTestId(`${label}-edit-field`).value).toBe('Test text');

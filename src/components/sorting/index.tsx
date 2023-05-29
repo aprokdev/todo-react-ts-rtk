@@ -2,21 +2,32 @@
 
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import { actionTypes } from '~todo-context/actionTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    sortByAlphabet,
+    sortByAlphabetReverse,
+    sortByDate,
+} from '~app-state/sortingTitle/sortingTitleSlice';
+import { RootState } from '~app-state/store';
+// import { actionTypes } from '~todo-context/actionTypes';
 import { sortingText } from '~todo-context/reducer';
 import './style.scss';
-import { ISortingProps } from './types';
 
-function Sorting({ sortingTitle, dispatch }: ISortingProps) {
+// import { ISortingProps } from './types';
+
+// function Sorting({ sortingTitle, dispatch }: ISortingProps) {
+function Sorting() {
+    const sortingTitle = useSelector((state: RootState) => state.sortingTitle);
+    const dispatch = useDispatch();
     const onHeaderlickHeader = React.useCallback(() => {
         if (sortingTitle === sortingText.CREATION_DATE) {
-            dispatch({ type: actionTypes.SORT_BY_ALPHABET });
+            dispatch(sortByAlphabet());
         }
         if (sortingTitle === sortingText.ALPHABET) {
-            dispatch({ type: actionTypes.SORT_BY_ALPHABET_REVERSE });
+            dispatch(sortByAlphabetReverse());
         }
         if (sortingTitle === sortingText.ALPHABET_REVERSE) {
-            dispatch({ type: actionTypes.SORT_BY_DATE });
+            dispatch(sortByDate());
         }
     }, [dispatch, sortingTitle]);
 
@@ -44,5 +55,5 @@ function Sorting({ sortingTitle, dispatch }: ISortingProps) {
     );
 }
 
-export default Sorting;
-// export default React.memo(Sorting);
+// export default Sorting;
+export default React.memo(Sorting);

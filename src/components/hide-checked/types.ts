@@ -1,4 +1,6 @@
+import { IAction } from '~src/todo-context/types';
+
 export interface IHideCheckedProps {
     isCompletedHidden: boolean;
-    setHideCompleted: (val: boolean) => void;
+    dispatch: React.Dispatch<IAction>;
 }

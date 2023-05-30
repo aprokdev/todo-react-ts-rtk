@@ -8,9 +8,6 @@ import { ITodo } from '~src/todo-context/types';
 import TodoItem from '~components/todo-item/index';
 import './style.scss';
 
-// import { ITodosListProps } from './types';
-
-// function TodosList({ listTodos, dispatch, isCompletedHidden }: ITodosListProps): JSX.Element {
 function TodosList(): JSX.Element {
     const listTodos = useSelector((state: RootState) => state.todos);
     const isCompletedHidden = useSelector((state: RootState) => state.hideCompleted);

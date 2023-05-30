@@ -11,6 +11,7 @@ exports[`Sorting matches snapshot 1`] = `
     tabIndex={0}
   >
     ✨ Sort tasks by: 
+    CREATION DATE
   </h3>
 </div>
 `;

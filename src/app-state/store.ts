@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import hideCompletedReducer from '~app-state/hideCompleted/hideCompletedSlice';
-import sortingTitleReducer from '~app-state/sortingTitle/sortingTitleSlice';
+import sortingTitleReducer, { sortingText } from '~app-state/sortingTitle/sortingTitleSlice';
 import todosReducer from '~app-state/todos/todosSlice';
 
 export const store = configureStore({
@@ -10,6 +10,11 @@ export const store = configureStore({
         hideCompleted: hideCompletedReducer,
     },
     devTools: true,
+    preloadedState: {
+        todos: [],
+        sortingTitle: sortingText.CREATION_DATE,
+        hideCompleted: false,
+    },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

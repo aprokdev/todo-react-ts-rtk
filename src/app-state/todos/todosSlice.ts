@@ -55,7 +55,6 @@ export const todosSlice = createSlice({
                 isCompleted: false,
                 created: Number(new Date()),
             });
-            return state;
         },
         checkTodo: (state: TodosState, action: PayloadAction<ICheckTodoPayload>) => {
             const todoIndex = findTodoIndex(state, action.payload.id);
@@ -63,11 +62,9 @@ export const todosSlice = createSlice({
                 ...state[todoIndex],
                 isCompleted: action.payload.checked,
             });
-            return state;
         },
         deleteTodo: (state: TodosState, action: PayloadAction<IDeleteTodoPayload>) => {
             state.splice(findTodoIndex(state, action.payload.id), 1);
-            return state;
         },
         editTodo: (state: TodosState, action: PayloadAction<IEditTodoPayload>) => {
             const todoIndex = findTodoIndex(state, action.payload.id);
@@ -75,13 +72,12 @@ export const todosSlice = createSlice({
                 ...state[todoIndex],
                 label: action.payload.text,
             });
-            return state;
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(sortByDate, (state: TodosState) => {
-                return state.sort((a: ITodo, b: ITodo) => {
+                state.sort((a: ITodo, b: ITodo) => {
                     if (a.created < b.created) {
                         return -1;
                     }
@@ -89,7 +85,7 @@ export const todosSlice = createSlice({
                 });
             })
             .addCase(sortByAlphabet, (state: TodosState) => {
-                return state.sort((a: ITodo, b: ITodo) => {
+                state.sort((a: ITodo, b: ITodo) => {
                     if (a.label < b.label) {
                         return -1;
                     }
@@ -97,7 +93,7 @@ export const todosSlice = createSlice({
                 });
             })
             .addCase(sortByAlphabetReverse, (state: TodosState) => {
-                return state
+                state
                     .sort((a: ITodo, b: ITodo) => {
                         if (a.label < b.label) {
                             return -1;

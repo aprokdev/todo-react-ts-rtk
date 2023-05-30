@@ -8,7 +8,6 @@ import { ITodo } from '~src/todo-context/types';
 import Checkbox from '~ui/checkbox';
 import Label from '~ui/label';
 import TextareaAutosize from '~ui/textarea-autosize';
-// import { actionTypes } from '~todo-context/actionTypes';
 import './style.scss';
 import { ITodoProps } from './type';
 

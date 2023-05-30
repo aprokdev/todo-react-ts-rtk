@@ -9,13 +9,9 @@ import {
     sortByDate,
 } from '~app-state/sortingTitle/sortingTitleSlice';
 import { RootState } from '~app-state/store';
-// import { actionTypes } from '~todo-context/actionTypes';
 import { sortingText } from '~todo-context/reducer';
 import './style.scss';
 
-// import { ISortingProps } from './types';
-
-// function Sorting({ sortingTitle, dispatch }: ISortingProps) {
 function Sorting() {
     const sortingTitle = useSelector((state: RootState) => state.sortingTitle);
     const dispatch = useDispatch();

@@ -55,8 +55,8 @@ module.exports = {
         new SimpleProgressPlugin({
             messageTemplate: [
                 ':bar',
-                chalk.hex(barColor)(':percent'),
-                chalk.hex(barColor)(':msg'),
+                chalk.hex('white')(':percent'),
+                chalk.hex('white')(':msg'),
             ].join(' '),
             progressOptions: {
                 complete: chalk.bgHex(barColor)(' '),

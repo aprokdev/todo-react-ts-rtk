@@ -4,12 +4,8 @@ import { useDispatch } from 'react-redux';
 import { addTodo } from '~app-state/todos/todosSlice';
 import Button from '~ui/button';
 import Input from '~ui/input';
-// import { actionTypes } from '~todo-context/actionTypes';
 import './style.scss';
 
-// import { ICreateTodoProps } from './types';
-
-// function CreateTodo({ dispatch }: ICreateTodoProps) {
 function CreateTodo() {
     const dispatch = useDispatch();
     const [text, updateText] = React.useState<string>('');
@@ -17,7 +13,9 @@ function CreateTodo() {
     const createTodo = React.useCallback(
         (event: React.MouseEvent<HTMLInputElement>) => {
             event.preventDefault();
-            if (text) dispatch(addTodo({ text }));
+            if (text) {
+                dispatch(addTodo({ text }));
+            }
             updateText('');
         },
         [text, dispatch]

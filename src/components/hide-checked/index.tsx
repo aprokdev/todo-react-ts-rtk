@@ -6,8 +6,6 @@ import Checkbox from '~ui/checkbox';
 import Label from '~ui/label';
 import './style.scss';
 
-// import { IHideCheckedProps } from './types';
-
 function HideChecked() {
     const isCompletedHidden = useSelector((state: RootState) => state.hideCompleted);
     const dispatch = useDispatch();

@@ -46,7 +46,7 @@ function isRejectedAction(action: AnyAction): action is RejectedAction {
 
 export const todosSlice = createSlice({
     name: 'todos',
-    initialState: JSON.parse(localStorage.getItem('listTodos')) || [],
+    initialState: () => JSON.parse(localStorage.getItem('listTodos')) || [],
     reducers: {
         addTodo: (state: TodosState, action: PayloadAction<IAddTodoPayload>) => {
             state.push({

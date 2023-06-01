@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { store } from '~app-state/store';
+import { setupStore } from '~app-state/store';
 import App from './app';
 import './index.scss';
+
+const store = setupStore();
 
 const root = (
     <React.StrictMode>

@@ -1,23 +1,29 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit';
 import hideCompletedReducer from '~app-state/hideCompleted/hideCompletedSlice';
-import sortingTitleReducer, { sortingText } from '~app-state/sortingTitle/sortingTitleSlice';
+import sortingTitleReducer from '~app-state/sortingTitle/sortingTitleSlice';
 import todosReducer from '~app-state/todos/todosSlice';
 
-export const store = configureStore({
-    reducer: {
-        todos: todosReducer,
-        sortingTitle: sortingTitleReducer,
-        hideCompleted: hideCompletedReducer,
-    },
-    devTools: true,
-    preloadedState: {
-        todos: [],
-        sortingTitle: sortingText.CREATION_DATE,
-        hideCompleted: false,
-    },
+export const rootReducer = combineReducers({
+    todos: todosReducer,
+    sortingTitle: sortingTitleReducer,
+    hideCompleted: hideCompletedReducer,
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
+export function setupStore(preloadedState?: PreloadedState<RootState>) {
+    const store = configureStore({
+        reducer: rootReducer,
+        devTools: true,
+        preloadedState,
+    });
+    // add subscribtion on every action:
+    store.subscribe(() => {
+        localStorage.setItem('listTodos', JSON.stringify(store.getState().todos));
+        localStorage.setItem('sortingTitle', JSON.stringify(store.getState().sortingTitle));
+    });
+
+    return store;
+}
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];

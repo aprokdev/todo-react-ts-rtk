@@ -1,11 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import TestRenderer from 'react-test-renderer';
-// import { act, create } from 'react-test-renderer';
-import { store } from '~app-state/store';
+import { act, create } from 'react-test-renderer';
+import { setupStore } from '~app-state/store';
 import HideChecked from '../index';
 
-const { act, create } = TestRenderer;
+const store = setupStore();
 
 function Test() {
     return (

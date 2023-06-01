@@ -10,7 +10,8 @@ export const sortingText = {
 
 export const sortingTitleSlice = createSlice({
     name: 'sortingTitle',
-    initialState: JSON.parse(localStorage.getItem('sortingTitle')) || sortingText.CREATION_DATE,
+    initialState: () =>
+        JSON.parse(localStorage.getItem('sortingTitle')) || sortingText.CREATION_DATE,
     reducers: {
         sortByDate: () => {
             return sortingText.CREATION_DATE;

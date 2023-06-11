@@ -17,16 +17,20 @@
         margin-bottom: 60px;
     }
 
-    &__head-img {
+    &__link {
         display: block;
         width: 50px;
         height: 50px;
         margin-left: 20px;
+        border-radius: 5px;
+        overflow: hidden;
     }
 
-    &__head-img--redux {
-        width: 54px;
-        object-fit: cover;
+    &__head-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
     }
 
     &__title {

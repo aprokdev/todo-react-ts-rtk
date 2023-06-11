@@ -5,7 +5,7 @@ import HideChecked from '~components/hide-checked';
 import Sorting from '~components/sorting';
 import TodosList from '~components/todos-list';
 import icon from '~img/icon.svg';
-import reduxLogo from '~img/redux-logo.png';
+import reduxLogo from '~img/redux.svg';
 import { RootState } from './app-state/store';
 import './app.scss';
 
@@ -16,8 +16,22 @@ function App() {
         <div className="app">
             <div className="app__head">
                 <h1 className="app__title">Todo List</h1>
-                <img src={icon} alt="" className="app__head-img" />
-                <img src={reduxLogo} alt="" className="app__head-img app__head-img--redux" />
+                <a
+                    href="https://www.typescriptlang.org/"
+                    className="app__link"
+                    target="__blank"
+                    rel="noreferer noopener"
+                >
+                    <img src={icon} alt="" className="app__head-img" />
+                </a>
+                <a
+                    href="https://redux-toolkit.js.org/"
+                    className="app__link"
+                    target="__blank"
+                    rel="noreferer noopener"
+                >
+                    <img src={reduxLogo} alt="" className="app__head-img" />
+                </a>
             </div>
             <CreateTodo />
             {listTodos.length > 0 && <Sorting />}

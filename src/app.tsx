@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import CreateTodo from '~components/create-todo';
-import HideChecked from '~components/hide-checked';
-import Sorting from '~components/sorting';
-import TodosList from '~components/todos-list';
-import icon from '~img/icon.svg';
-import reduxLogo from '~img/redux.svg';
+import CreateTodo from '@components/create-todo';
+import HideChecked from '@components/hide-checked';
+import Sorting from '@components/sorting';
+import TodosList from '@components/todos-list';
+import icon from '@img/icon.svg';
+import reduxLogo from '@img/redux.svg';
 import { RootState } from './app-state/store';
 import './app.scss';
 

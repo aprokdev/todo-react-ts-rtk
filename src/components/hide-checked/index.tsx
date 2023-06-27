@@ -1,9 +1,9 @@
+import { setHideCompleted } from '@app-state/hideCompleted/hideCompletedSlice';
+import { RootState } from '@app-state/store';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setHideCompleted } from '~app-state/hideCompleted/hideCompletedSlice';
-import { RootState } from '~app-state/store';
-import Checkbox from '~ui/checkbox';
-import Label from '~ui/label';
+import Checkbox from '@ui/checkbox';
+import Label from '@ui/label';
 import './style.scss';
 
 function HideChecked() {

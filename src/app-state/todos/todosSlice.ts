@@ -1,10 +1,10 @@
-import { Action, AnyAction, createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import {
     sortByAlphabet,
     sortByAlphabetReverse,
     sortByDate,
-} from '../sortingTitle/sortingTitleSlice';
+} from '@app-state/sortingTitle/sortingTitleSlice';
+import { Action, AnyAction, createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface ITodo {
     id: string;

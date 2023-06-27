@@ -1,9 +1,9 @@
 /* eslint-disable no-extra-boolean-cast */
+import { addTodo } from '@app-state/todos/todosSlice';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '~app-state/todos/todosSlice';
-import Button from '~ui/button';
-import Input from '~ui/input';
+import Button from '@ui/button';
+import Input from '@ui/input';
 import './style.scss';
 
 function CreateTodo() {

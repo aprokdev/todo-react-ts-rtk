@@ -1,7 +1,7 @@
+import { setupStore } from '@app-state/store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { setupStore } from '~app-state/store';
 import App from './app';
 import './index.scss';
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { MouseEvent } from 'react';
 import { useInView } from 'react-intersection-observer';
 import 'react-intersection-observer/test-utils';
-import { ITodo } from '@src/todo-context/types';
+import { ITodo } from '@src/app-state/todos/todosSlice';
 import Checkbox from '@ui/checkbox';
 import Label from '@ui/label';
 import TextareaAutosize from '@ui/textarea-autosize';

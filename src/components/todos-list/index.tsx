@@ -4,7 +4,7 @@
 import { RootState } from '@app-state/store';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ITodo } from '@src/todo-context/types';
+import { ITodo } from '@src/app-state/todos/todosSlice';
 import TodoItem from '@components/todo-item/index';
 import './style.scss';
 

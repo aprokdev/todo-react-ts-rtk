@@ -17,10 +17,17 @@ export function setupStore(preloadedState?: PreloadedState<RootState>) {
         devTools: true,
         preloadedState,
     });
-    // add subscribtion on every action:
+
+    let isSavedTodos = true;
+    // adds subscribtion on every action:
     store.subscribe(() => {
-        localStorage.setItem('listTodos', JSON.stringify(store.getState().todos));
-        localStorage.setItem('sortingTitle', JSON.stringify(store.getState().sortingTitle));
+        // saves current todos and sorting states to LocalStorage only if action type is not "clearLocalStorage":
+        isSavedTodos = store.getState().isSavedTodos;
+        if (isSavedTodos) {
+            localStorage.setItem('listTodos', JSON.stringify(store.getState().todos));
+            localStorage.setItem('sortingTitle', JSON.stringify(store.getState().sortingTitle));
+        }
+        isSavedTodos = true;
     });
 
     return store;

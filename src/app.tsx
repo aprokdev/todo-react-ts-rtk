@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
+import ClearLocalStorage from '@components/clear-local-storage';
 import CreateTodo from '@components/create-todo';
 import HideChecked from '@components/hide-checked';
 import Sorting from '@components/sorting';
@@ -39,6 +40,7 @@ function App() {
             {Array.isArray(listTodos) &&
                 listTodos.length > 0 &&
                 listTodos.find(({ isCompleted }) => isCompleted) && <HideChecked />}
+            <ClearLocalStorage />
         </div>
     );
 }

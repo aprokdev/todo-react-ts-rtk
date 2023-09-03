@@ -1,4 +1,5 @@
 import hideCompletedReducer from '@app-state/hideCompleted/hideCompletedSlice';
+import isSavedTodosReducer from '@app-state/isSavedTodos/isSavedTodosSlice';
 import sortingTitleReducer from '@app-state/sortingTitle/sortingTitleSlice';
 import todosReducer from '@app-state/todos/todosSlice';
 import { PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -7,6 +8,7 @@ export const rootReducer = combineReducers({
     todos: todosReducer,
     sortingTitle: sortingTitleReducer,
     hideCompleted: hideCompletedReducer,
+    isSavedTodos: isSavedTodosReducer,
 });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {

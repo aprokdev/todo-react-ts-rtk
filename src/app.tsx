@@ -37,10 +37,12 @@ function App() {
             <CreateTodo />
             {listTodos.length > 0 && <Sorting />}
             <TodosList />
-            {Array.isArray(listTodos) &&
-                listTodos.length > 0 &&
-                listTodos.find(({ isCompleted }) => isCompleted) && <HideChecked />}
-            <ClearLocalStorage />
+            <div className="app__bottom">
+                {Array.isArray(listTodos) &&
+                    listTodos.length > 0 &&
+                    listTodos.find(({ isCompleted }) => isCompleted) && <HideChecked />}
+                <ClearLocalStorage />
+            </div>
         </div>
     );
 }

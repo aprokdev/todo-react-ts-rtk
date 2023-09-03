@@ -1,9 +1,27 @@
 @import '@styles/vars';
 
-.sorting {
-    display: flex;
-    margin-bottom: 32px;
-    &__title {
-        cursor: pointer;
+.clear-local-storage {
+    &__btn {
+        width: 150px;
+        background-color: black;
+        & > .clear-local-storage__mobile {
+            display: inline;
+        }
+        & > .clear-local-storage__desktop {
+            display: none;
+        }
+        @media (min-width: $ipad-portrait) {
+            width: 224px;
+            & > .clear-local-storage__mobile {
+                display: none;
+            }
+            & > .clear-local-storage__desktop {
+                display: inline;
+            }
+        }
+    }
+    &__btn:hover,
+    &__btn:active {
+        background-color: black;
     }
 }

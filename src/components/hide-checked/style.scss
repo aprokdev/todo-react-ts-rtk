@@ -5,4 +5,8 @@
     align-items: center;
     min-height: 56px;
     margin-right: 20px;
+    .checkbox,
+    .label {
+        transition: all ease 0.2s;
+    }
 }

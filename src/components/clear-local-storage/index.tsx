@@ -20,7 +20,7 @@ function ClearLocalStorage() {
                     onClick={() => dispatch(clearLocalStorage())}
                     disabled={false}
                     className="clear-local-storage__btn"
-                    testId="todo-create-btn"
+                    testId="clear-local-storage"
                 >
                     Clear <span className="clear-local-storage__desktop">Local Storage</span>{' '}
                     <span className="clear-local-storage__mobile">LS</span>

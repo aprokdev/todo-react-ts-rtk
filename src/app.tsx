@@ -13,6 +13,14 @@ import './app.scss';
 function App() {
     const listTodos = useSelector((state: RootState) => state.todos);
 
+    const isCheckedTodos = React.useMemo(() => {
+        return (
+            Array.isArray(listTodos) &&
+            listTodos.length > 0 &&
+            listTodos.find(({ isCompleted }) => isCompleted)
+        );
+    }, [listTodos]);
+
     return (
         <div className="app">
             <div className="app__head">
@@ -38,9 +46,9 @@ function App() {
             {listTodos.length > 0 && <Sorting />}
             <TodosList />
             <div className="app__bottom">
-                {Array.isArray(listTodos) &&
-                    listTodos.length > 0 &&
-                    listTodos.find(({ isCompleted }) => isCompleted) && <HideChecked />}
+                {Array.isArray(listTodos) && listTodos.length > 0 && (
+                    <HideChecked disabled={!isCheckedTodos} />
+                )}
                 <ClearLocalStorage />
             </div>
         </div>

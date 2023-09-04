@@ -334,7 +334,7 @@ const orderByReverseAlphabet = [
     '12213fdgd',
 ];
 
-describe('Todo Functionalityworks with localStorage properly', () => {
+describe('Todo Functionality works with localStorage properly', () => {
     const regExpToGet =
         /asds dsaddbsaddft|pouipiuoiuou|werewrewr|dfgfdamfdfd|iidfigdfigdf|bfsdfdsfds|12213fdgd|test text/;
 

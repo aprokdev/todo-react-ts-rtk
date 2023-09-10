@@ -21,7 +21,11 @@ function TodoItem({ todo, dispatch, testId }: ITodoProps): JSX.Element {
     });
     const flagRef = React.useRef<boolean>(false);
     let changableClasses = 'todo-item--invisible';
-    if (inView || flagRef.current) {
+    // if (inView || flagRef.current) {
+    //     changableClasses = 'todo-item--visible';
+    //     flagRef.current = true;
+    // }
+    if (inView) {
         changableClasses = 'todo-item--visible';
         flagRef.current = true;
     }

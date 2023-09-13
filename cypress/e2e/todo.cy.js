@@ -371,3 +371,41 @@ describe('Todo Functionality works with localStorage properly', () => {
         });
     });
 });
+
+describe('Clearing Local Storage works properly', () => {
+    beforeEach(() => {
+        cy.clearLocalStorage();
+        cy.viewport(1366, 768);
+        cy.visit(page);
+    });
+
+    it('Clicking on clear-local-storage btn cleans LS and removes that btn from document', async () => {
+        const firstTodoText = 'Test todo';
+
+        // add todo item
+        cy.get('#new-todo-input')
+            .type(firstTodoText, { delay: typeDelay })
+            .should('have.value', firstTodoText);
+        cy.contains(/add/i).click();
+        cy.contains(firstTodoText).should('exist');
+        cy.get('.todo-item').should('have.length', 1);
+
+        // check todo item is saved in LS and Clear LS btn is visible
+        cy.getLocalStorage('listTodos').then((lsValue) =>
+            expect(JSON.parse(lsValue)).not.to.eql(null)
+        );
+        cy.getLocalStorage('sortingTitle').then((lsValue) =>
+            expect(JSON.parse(lsValue)).not.to.eql(null)
+        );
+
+        // clear LS by clicking clearLSBtn
+        cy.contains(/clear local storage/i).click();
+
+        // check todo item is cleared from LS and Clear LS btn is not visible
+        cy.getLocalStorage('listTodos').then((lsValue) => expect(JSON.parse(lsValue)).to.eql(null));
+        cy.getLocalStorage('sortingTitle').then((lsValue) =>
+            expect(JSON.parse(lsValue)).to.eql(null)
+        );
+        cy.contains(/clear local storage/i).should('not.exist');
+    });
+});

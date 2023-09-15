@@ -1,6 +1,9 @@
 @import '@styles/vars';
 
 .clear-local-storage {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
     &__btn {
         width: 150px;
         background-color: black;

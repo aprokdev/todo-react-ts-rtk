@@ -8,11 +8,14 @@ It is simple todo app, based on React, Typescript and Redux-toolkit. Your todos 
 
 How to start:
 
-Install all dependencies by running `npm install` or `yarn install`
-Start development with `npm start` or `yarn start` commands
+Install all dependencies by running `npm install` or `yarn install`.
+
+Start development with `npm start` or `yarn start` commands.
+
 To make a production build run `npm run build` or `yarn build`
 
 To run unit tests, run `npm run tests` for verbose results or `npm run test:dev` for development mode.
+
 To run E2E tests, run `npm run tests:e2e`
 
 To ensure, that sorting works, you can put the following code to console and press Enter, then update page and change sorting by clicking on "Sort tasks by:"

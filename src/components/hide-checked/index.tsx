@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Checkbox from '@ui/checkbox';
 import Label from '@ui/label';
 import './style.scss';
-import { IHideCheckedProps } from './type';
+import { IHideCheckedProps } from './types';
 
 function HideChecked({ disabled }: IHideCheckedProps) {
     const isCompletedHidden = useSelector((state: RootState) => state.hideCompleted);

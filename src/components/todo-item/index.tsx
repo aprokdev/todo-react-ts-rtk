@@ -9,7 +9,7 @@ import Checkbox from '@ui/checkbox';
 import Label from '@ui/label';
 import TextareaAutosize from '@ui/textarea-autosize';
 import './style.scss';
-import { ITodoProps } from './type';
+import { ITodoProps } from './types';
 
 function TodoItem({ todo, dispatch, testId }: ITodoProps): JSX.Element {
     const { id, label, isCompleted, created }: ITodo = todo;

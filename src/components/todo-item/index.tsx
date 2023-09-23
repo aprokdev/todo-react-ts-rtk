@@ -61,10 +61,7 @@ function TodoItem({ todo, dispatch, testId }: ITodoProps): JSX.Element {
             <div className="todo-item__check-group">
                 <Checkbox
                     checked={isCompleted}
-                    onChange={({ target }) =>
-                        // dispatch({ type: actionTypes.CHECK_TODO, id, checked: target.checked })
-                        dispatch(checkTodo({ id, checked: target.checked }))
-                    }
+                    onChange={({ target }) => dispatch(checkTodo({ id, checked: target.checked }))}
                     id={String(id)}
                     testId={`${label}-cb`}
                 />
